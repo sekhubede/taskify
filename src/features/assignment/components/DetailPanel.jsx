@@ -38,8 +38,8 @@ function DetailPanel({ assignment, isOpen, onClose }) {
                 </p>
             </div>
             <div>
-                <h4>Assignee</h4>
-                <p className="panel-text">{assignment.assignee}</p>
+                <h4>Assignees</h4>
+                <p className="panel-text">{assignment.assignees}</p>
             </div>
             <div>
                 <h4>Deadline</h4>
