@@ -25,7 +25,7 @@
  * @property {string} client - O'Neil client name
  * @property {number} priority - 1=Critical, 2=High, 3=Medium, 4=Low, 5=Not Determined
  * @property {string} status - M-Files workflow state. See ASSIGNMENT_STATES
- * @property {string} assignee - Assigned team member
+ * @property {Array<string>} assignees - Assigned team members
  * @property {string} deadline - ISO 8601 date string
  * @property {boolean} today - Assignment flag for tabs classification
  * @property {boolean} thisWeek - Assignment flag for tabs classification
@@ -82,223 +82,583 @@ export const ASSIGNMENT_STATES = {
 export const ASSIGNMENTS = [
   {
     id: 1,
-    title: "2026/07/09 NBN - M FILES Demo - Management",
+    title: "2026/07/09 Cloud Migration Strategy - Financial Services",
     description:
-      "Prepare a tailored M-Files demonstration for Nedbank Namibia's executive and senior management team, highlighting key M-Files capabilities and opportunities to complement existing Document Warehouse solutions. Attached please see screenshot of specifications.",
-    client: "N039 NEDBANK NAMIBIA LIMITED - WINDHOEK",
+      "Design and architect a comprehensive cloud migration strategy for a legacy financial services platform. Scope includes assessment of current infrastructure, identification of migration patterns (rehost, replatform, refactor), and development of a phased implementation roadmap with risk mitigation strategies.",
+    client: "GLOBAL BANKING SOLUTIONS INC.",
     priority: 1,
     status: ASSIGNMENT_STATES.ASSIGNED,
-    assignee: "Fiina Amupolo",
+    assignees: ["Sarah Mitchell", "James Rodriguez", "Priya Patel"],
     deadline: "09/07/2026",
     today: true,
     thisWeek: true,
     comments: [
       {
         id: 1,
-        author: "Fiina Amupolo",
+        author: "Sarah Mitchell",
         date: "10/07/2026",
-        text: "Initial draft prepared, waiting for feedback."
+        text: "Initial architecture assessment completed. Drafting migration roadmap."
       },
       {
         id: 2,
-        author: "John Doe",
+        author: "James Rodriguez",
         date: "11/07/2026",
-        text: "Please include the ROI section."
+        text: "Security compliance requirements identified. Need to align with SOC2 standards."
+      },
+      {
+        id: 3,
+        author: "Priya Patel",
+        date: "12/07/2026",
+        text: "Cost optimization analysis in progress. Estimated 30% cloud savings."
       }
     ],
     subtasks: [
       {
         id: 1,
-        text: "Prepare slide deck",
+        text: "Conduct infrastructure assessment",
         createdAt: "08/07/2026",
         done: true
       },
       {
         id: 2,
-        text: "Schedule demo room",
+        text: "Define migration patterns",
         createdAt: "09/07/2026",
         done: false
       },
       {
         id: 3,
-        text: "Send agenda to attendees",
+        text: "Create phased implementation plan",
         createdAt: "09/07/2026",
+        done: false
+      },
+      {
+        id: 4,
+        text: "Develop risk mitigation strategy",
+        createdAt: "10/07/2026",
         done: false
       }
     ],
     notes: [
-      { id: 1, text: "Meeting rescheduled to 10AM", createdAt: "08/07/2026" },
-      { id: 2, text: "Client confirmed attendance", createdAt: "09/07/2026" }
+      {
+        id: 1,
+        text: "Client meeting rescheduled to Thursday 10AM",
+        createdAt: "08/07/2026"
+      },
+      {
+        id: 2,
+        text: "Budget approved for Phase 1 ($250K)",
+        createdAt: "09/07/2026"
+      },
+      {
+        id: 3,
+        text: "Additional security team resources requested",
+        createdAt: "11/07/2026"
+      }
     ],
     reminder: "2 hours before"
   },
   {
     id: 2,
-    title: "2026/04/24 Homeloan Data Import & Validation",
+    title: "2026/04/24 Customer Data Integration Platform",
     description:
-      "🎯 Objective Perform a data import and validation within the client environment using the provided spreadsheet.🧾Overview▪️ Primary Tasks:◽Data Import.◽Validation: Conduct a thorough double-check and final confirmation of all entries. ▪️ System Access: This task requires active credentials/access to the client environment. ▪️ Data Source: Refer to the attached spreadsheet for all specific entry details.",
-    client: "F032 FNB FIDUCIARY (NAMIBIA) (PTY) LTD",
+      "Build a unified customer data integration platform that consolidates data from multiple sources (CRM, billing, support). Create ETL pipelines, ensure data quality, and provide a centralized API for downstream services. Include real-time sync capabilities and conflict resolution.",
+    client: "TECHNOVA SOLUTIONS PTY LTD",
     priority: 2,
     status: ASSIGNMENT_STATES.IN_PROGRESS,
-    assignee: "Casey Damens",
+    assignees: ["Emma Thompson"],
     deadline: "24/04/2026",
     today: true,
     thisWeek: true,
     comments: [
       {
         id: 1,
-        author: "Casey Damens",
+        author: "Emma Thompson",
         date: "20/04/2026",
-        text: "Data import complete, starting validation."
+        text: "ETL pipeline design completed. Starting implementation."
+      },
+      {
+        id: 2,
+        author: "Michael Chen",
+        date: "21/04/2026",
+        text: "API framework ready. Integration with CRM in progress."
+      },
+      {
+        id: 3,
+        author: "Emma Thompson",
+        date: "22/04/2026",
+        text: "Data validation layer implemented. 75% of data sources integrated."
       }
     ],
     subtasks: [
       {
         id: 1,
-        text: "Import data from CSV",
+        text: "Design ETL pipeline architecture",
         createdAt: "20/04/2026",
         done: true
       },
       {
         id: 2,
-        text: "Validate all entries",
+        text: "Implement data extraction layer",
         createdAt: "20/04/2026",
         done: false
       },
       {
         id: 3,
-        text: "Final confirmation",
-        createdAt: "20/04/2026",
+        text: "Build API gateway",
+        createdAt: "21/04/2026",
+        done: false
+      },
+      {
+        id: 4,
+        text: "Set up monitoring and logging",
+        createdAt: "22/04/2026",
         done: false
       }
     ],
     notes: [
       {
         id: 1,
-        text: "Waiting on IT, to provide access to the folder with the CSV.",
+        text: "Source systems have inconsistent schema definitions. Need mapping strategy.",
         createdAt: "20/04/2026"
+      },
+      {
+        id: 2,
+        text: "Client requested additional data source (marketing automation tool)",
+        createdAt: "21/04/2026"
       }
     ],
     reminder: "End of Day"
   },
   {
     id: 3,
-    title: "2026/07/21 LSN Member Listing",
+    title: "2026/07/21 Member Portal Development",
     description:
-      "Compile a list of all members with their details as recorded on M-Files. After compiling the list, do a data validation and import on the attached member listing. Billable: Please record time spent",
-    client: "T090 THE LAW SOCIETY OF NAMIBIA",
+      "Develop a comprehensive member portal with authentication, profile management, and document access features. Include role-based access control, audit logging, and integration with existing directory services. Focus on responsive design and accessibility compliance.",
+    client: "NATIONAL ASSOCIATION OF PROFESSIONALS",
     priority: 3,
     status: ASSIGNMENT_STATES.ON_HOLD,
-    assignee: "Johanna Hosea",
+    assignees: [],
     deadline: "21/07/2026",
     today: false,
     thisWeek: true,
-    comments: [],
+    comments: [
+      {
+        id: 1,
+        author: "Lisa Park",
+        date: "15/07/2026",
+        text: "UI wireframes approved by client. Frontend development started."
+      },
+      {
+        id: 2,
+        author: "Robert Wilson",
+        date: "18/07/2026",
+        text: "Authentication service implemented. Awaiting directory integration."
+      }
+    ],
     subtasks: [
       {
         id: 1,
-        text: "Export member list",
+        text: "Design UI/UX prototypes",
         createdAt: "21/07/2026",
         done: false
       },
-      { id: 2, text: "Validate data", createdAt: "21/07/2026", done: false }
+      {
+        id: 2,
+        text: "Implement authentication",
+        createdAt: "21/07/2026",
+        done: false
+      },
+      {
+        id: 3,
+        text: "Build profile management features",
+        createdAt: "22/07/2026",
+        done: false
+      },
+      {
+        id: 4,
+        text: "Integrate document management",
+        createdAt: "22/07/2026",
+        done: false
+      }
     ],
     notes: [
-      { id: 1, text: "Other tasks taking priority.", createdAt: "22/07/2026" }
+      {
+        id: 1,
+        text: "Client requested additional features (member directory)",
+        createdAt: "22/07/2026"
+      },
+      {
+        id: 2,
+        text: "Database schema revision needed for new requirements",
+        createdAt: "23/07/2026"
+      }
     ],
     reminder: null
   },
   {
     id: 4,
-    title: "2026/06/24  Case Management CMS - Case summary for Dashboard",
+    title: "2026/06/24 Legal Case Management Dashboard",
     description:
-      " Consolidated Dashboards: Developing a single interactive tab capable of aggregating and displaying metadata from multiple objects simultaneously. Allow for for creation of Cases, Case summary and Complaints. Refer to the linked document of a CMS system used by the client.",
-    client: "M003 MINISTRY OF JUSTICE",
+      "Create an interactive dashboard for legal case management with comprehensive filtering, advanced search, and visual analytics. Support multiple object types including cases, complaints, and hearings. Include customizable views and real-time data updates.",
+    client: "FEDERAL JUSTICE DEPARTMENT",
     priority: 4,
     status: ASSIGNMENT_STATES.UPDATE_REQUIRED,
-    assignee: "Malakia Jeremia",
+    assignees: ["David Kim", "Rachel Adams"],
     deadline: "24/06/2026",
     today: false,
     thisWeek: false,
     comments: [
       {
         id: 1,
-        author: "Malakia Jeremia",
+        author: "David Kim",
         date: "24/06/2026",
-        text: "Stuck on installing tools for development. Following up with IT."
+        text: "Dashboard prototype ready. Need backend integration."
+      },
+      {
+        id: 2,
+        author: "Rachel Adams",
+        date: "25/06/2026",
+        text: "API endpoints designed. Working on data aggregation."
+      },
+      {
+        id: 3,
+        author: "David Kim",
+        date: "26/06/2026",
+        text: "Client requested additional filters and export features."
       }
     ],
-    subtasks: [],
-    notes: [],
+    subtasks: [
+      {
+        id: 1,
+        text: "Define data model",
+        createdAt: "20/06/2026",
+        done: true
+      },
+      {
+        id: 2,
+        text: "Design dashboard wireframes",
+        createdAt: "21/06/2026",
+        done: false
+      },
+      {
+        id: 3,
+        text: "Implement backend APIs",
+        createdAt: "22/06/2026",
+        done: false
+      },
+      {
+        id: 4,
+        text: "Develop frontend components",
+        createdAt: "23/06/2026",
+        done: false
+      }
+    ],
+    notes: [
+      {
+        id: 1,
+        text: "Data privacy requirements need clarification.",
+        createdAt: "24/06/2026"
+      },
+      {
+        id: 2,
+        text: "Performance optimization needed for large datasets.",
+        createdAt: "25/06/2026"
+      }
+    ],
     reminder: null
   },
   {
     id: 5,
-    title: "2026/09/30 Retrievals Process - Dev",
+    title: "2026/09/30 Document Retrieval System Upgrade",
     description:
-      "To create, maintain, and improve systems that support the retrieval process. Including automating request tracking, integrating databases, and ensuring accurate document or data retrieval.  Also troubleshoot issues, enhance system performance, and support users throughout the retrieval workflow.",
-    client: "T009 TDW NAMIBIA",
+      "Design and implement an enhanced document retrieval system with improved search capabilities, intelligent indexing, and automated workflows. The system should handle multiple document formats, support version control, and provide a user-friendly interface for efficient document discovery.",
+    client: "CORPORATE RECORDS MANAGEMENT INC.",
     priority: 5,
     status: ASSIGNMENT_STATES.AWAITING_REVIEW,
-    assignee: "Michael Sekhubede",
+    assignees: ["Jennifer Lee", "Thomas Anderson", "Maria Garcia"],
     deadline: "30/09/2026",
     today: false,
     thisWeek: false,
-    comments: [],
-    subtasks: [],
-    notes: [],
+    comments: [
+      {
+        id: 1,
+        author: "Jennifer Lee",
+        date: "15/09/2026",
+        text: "Search engine optimization complete. Indexing 50K+ documents."
+      },
+      {
+        id: 2,
+        author: "Thomas Anderson",
+        date: "18/09/2026",
+        text: "Workflow automation module under development. 70% complete."
+      },
+      {
+        id: 3,
+        author: "Maria Garcia",
+        date: "20/09/2026",
+        text: "System performance testing shows 40% improvement over legacy system."
+      }
+    ],
+    subtasks: [
+      {
+        id: 1,
+        text: "Conduct system analysis",
+        createdAt: "01/09/2026",
+        done: true
+      },
+      {
+        id: 2,
+        text: "Design search architecture",
+        createdAt: "05/09/2026",
+        done: true
+      },
+      {
+        id: 3,
+        text: "Implement indexing engine",
+        createdAt: "10/09/2026",
+        done: false
+      },
+      {
+        id: 4,
+        text: "Develop user interface",
+        createdAt: "15/09/2026",
+        done: false
+      }
+    ],
+    notes: [
+      {
+        id: 1,
+        text: "Legacy data migration planning in progress.",
+        createdAt: "19/09/2026"
+      },
+      {
+        id: 2,
+        text: "User acceptance testing scheduled for October 1.",
+        createdAt: "21/09/2026"
+      }
+    ],
     reminder: null
   },
   {
     id: 6,
-    title: "2026/12/18 VAF for resale",
+    title: "2026/12/18 Security Framework Implementation",
     description:
-      "Add to TDW's revenue by preparing at least 1 VAF for resale. Keep comments up to date (minimum weekly) on progress made.",
-    client: "T009 TDW NAMIBIA",
+      "Design and implement a comprehensive security framework including identity management, authentication, authorization, and audit logging. Develop security policies, conduct risk assessment, and ensure compliance with industry standards.",
+    client: "SECURE SOLUTIONS GROUP",
     priority: 3,
     status: ASSIGNMENT_STATES.APPROVED,
-    assignee: "Denilson Uariua",
+    assignees: ["Mark Thompson", "Sophia Chen"],
     deadline: "18/12/2026",
     today: false,
     thisWeek: false,
-    comments: [],
-    subtasks: [],
-    notes: [],
+    comments: [
+      {
+        id: 1,
+        author: "Mark Thompson",
+        date: "01/12/2026",
+        text: "Security architecture designed. Framework documentation started."
+      },
+      {
+        id: 2,
+        author: "Sophia Chen",
+        date: "08/12/2026",
+        text: "Authentication module implementation complete. Moving to authorization."
+      },
+      {
+        id: 3,
+        author: "Mark Thompson",
+        date: "10/12/2026",
+        text: "Client reviewed security policies. Minor adjustments requested."
+      }
+    ],
+    subtasks: [
+      {
+        id: 1,
+        text: "Conduct security risk assessment",
+        createdAt: "01/12/2026",
+        done: true
+      },
+      {
+        id: 2,
+        text: "Design security architecture",
+        createdAt: "05/12/2026",
+        done: true
+      },
+      {
+        id: 3,
+        text: "Implement authentication module",
+        createdAt: "08/12/2026",
+        done: false
+      },
+      {
+        id: 4,
+        text: "Develop authorization policies",
+        createdAt: "10/12/2026",
+        done: false
+      }
+    ],
+    notes: [
+      {
+        id: 1,
+        text: "Compliance with GDPR and CCPA required.",
+        createdAt: "05/12/2026"
+      },
+      {
+        id: 2,
+        text: "Budget increased by 15% for additional resources.",
+        createdAt: "09/12/2026"
+      }
+    ],
     reminder: null
   },
   {
     id: 7,
-    title: "2026/06/22 Namib Mills Validation - Initials & Name",
+    title: "2026/06/22 Employee Records Data Standardization",
     description:
-      'Use the Namib Mills vault to conduct a validation across the "Employee Name" property definition. This should be a combination of the Surname & Initials. At times, it was noted that the initials composed of the first letter of the First Name & Surname, which is incorrect. The initials should only take from the first letter of any First/Second Names that the person has, and not include the surname. First test locally to ensure that validation process covers all steps including identifying all fields that need to be updates, as well as how the fields would be updated. Then have this process approved before moving it into production. Save validation steps taken in a document, as well as any findings, and link this to the assignment as separate documents.',
-    client: "N005 NAMIB MILLS (PTY) LTD",
+      "Develop a comprehensive data standardization process for employee records across multiple HR systems. Standardize name formats, employee IDs, department codes, and job titles. Create validation rules, error handling, and automated correction processes.",
+    client: "GLOBAL TALENT MANAGEMENT INC.",
     priority: 2,
     status: ASSIGNMENT_STATES.COMPLETED,
-    assignee: "David Van Rooyen",
+    assignees: ["Natalie Foster", "Brian Park"],
     deadline: "22/06/2026",
     today: false,
     thisWeek: false,
-    comments: [],
-    subtasks: [],
-    notes: [],
+    comments: [
+      {
+        id: 1,
+        author: "Natalie Foster",
+        date: "15/06/2026",
+        text: "Data analysis complete. Identified 5,000+ records requiring standardization."
+      },
+      {
+        id: 2,
+        author: "Brian Park",
+        date: "18/06/2026",
+        text: "Automation script tested and validated. Ready for production."
+      },
+      {
+        id: 3,
+        author: "Natalie Foster",
+        date: "20/06/2026",
+        text: "Production deployment successful. All employee records standardized."
+      }
+    ],
+    subtasks: [
+      {
+        id: 1,
+        text: "Analyze current data quality",
+        createdAt: "10/06/2026",
+        done: true
+      },
+      {
+        id: 2,
+        text: "Define standardization rules",
+        createdAt: "15/06/2026",
+        done: true
+      },
+      {
+        id: 3,
+        text: "Develop automation scripts",
+        createdAt: "18/06/2026",
+        done: true
+      },
+      {
+        id: 4,
+        text: "Deploy to production",
+        createdAt: "20/06/2026",
+        done: true
+      }
+    ],
+    notes: [
+      {
+        id: 1,
+        text: "Data quality issues found in legacy systems.",
+        createdAt: "12/06/2026"
+      },
+      {
+        id: 2,
+        text: "Client requested quarterly data quality reports.",
+        createdAt: "21/06/2026"
+      }
+    ],
     reminder: null
   },
   {
     id: 8,
-    title:
-      "2026/05/27 Monthly Task: Namib Mills Vault - Data Validation (May 2026)",
+    title: "2026/05/27 Monthly Data Quality Assessment - Q2 2026",
     description:
-      "Use this object to record time spent throughout the month for billing purposes, everytime data import/export/validation is done & to record Work Order Number. Use Purchase Order depending on the month - N005",
-    client: "N005 NAMIB MILLS (PTY) LTD",
+      "Conduct comprehensive data quality assessment across all production systems. Monitor data quality metrics, identify data anomalies, and generate detailed reports. Track key performance indicators including completeness, accuracy, consistency, and timeliness.",
+    client: "ENTERPRISE DATA SOLUTIONS INC.",
     priority: 2,
     status: ASSIGNMENT_STATES.BILLED,
-    assignee: "Casey Damens",
+    assignees: ["Stephanie Williams", "David Lee", "Michelle Park"],
     deadline: "27/05/2026",
     today: false,
     thisWeek: false,
-    comments: [],
-    subtasks: [],
-    notes: [],
+    comments: [
+      {
+        id: 1,
+        author: "Stephanie Williams",
+        date: "01/05/2026",
+        text: "Data quality assessment framework established. Baseline metrics collected."
+      },
+      {
+        id: 2,
+        author: "David Lee",
+        date: "10/05/2026",
+        text: "Monthly data validation across 5 major systems. 98.5% overall accuracy."
+      },
+      {
+        id: 3,
+        author: "Michelle Park",
+        date: "20/05/2026",
+        text: "Automated reporting pipeline implemented. Real-time monitoring activated."
+      },
+      {
+        id: 4,
+        author: "Stephanie Williams",
+        date: "27/05/2026",
+        text: "Monthly assessment complete. Client presentation scheduled for June 1st."
+      }
+    ],
+    subtasks: [
+      {
+        id: 1,
+        text: "Set up data quality metrics",
+        createdAt: "01/05/2026",
+        done: true
+      },
+      {
+        id: 2,
+        text: "Collect baseline measurements",
+        createdAt: "01/05/2026",
+        done: true
+      },
+      {
+        id: 3,
+        text: "Generate monthly report",
+        createdAt: "25/05/2026",
+        done: true
+      },
+      {
+        id: 4,
+        text: "Submit for client review",
+        createdAt: "27/05/2026",
+        done: true
+      }
+    ],
+    notes: [
+      {
+        id: 1,
+        text: "New data quality tools implemented this month.",
+        createdAt: "01/05/2026"
+      },
+      {
+        id: 2,
+        text: "Significant improvement in data completeness (+12%).",
+        createdAt: "15/05/2026"
+      }
+    ],
     reminder: null
   }
 ];
