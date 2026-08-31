@@ -33,7 +33,7 @@ function AssignmentCard({ assignment, onCardClick }) {
       <hr className='card-divider'/>
       <div className="card-footer">
         <div className="card-footer-left">
-          <p className="card-assignee">{assignment.assignee}</p>
+          <p className="card-assignee">{assignment.assignees}</p>
           <p className="card-client">{assignment.client}</p>
         </div>
         <div className="card-footer-right">
